@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar sidebargo">
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/intro.html">My Intro</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="main">
+            <div class="hamburger">
+                <img class="ham" src="ham.png" alt="" width="23px">
+                <img class="cross" src="cross.png" alt="" width="17px">
+            </div>
+            <div class="contactform">
+                <h1>Contact me for work/general Enquiries</h1>
+                <form>
+                    <div class="form-group">
+                        <label for="clientname">Name</label>
+                        <input type="name" class="form-control" id="clientname" aria-describedby="emailHelp" placeholder="Enter name"><br>
+                    </div>
+                    <div class="form-group">
+                        <label for="clientemail">Email address</label>
+                        <input type="email" class="form-control" id="clientemail" aria-describedby="emailHelp" placeholder="Enter email"><br>
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email and phone number with anyone else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="clientemail">Phone</label>
+                        <input type="phone" class="form-control" id="clientphone" placeholder="Enter phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="clientenquiry">Enquiry</label>
+                        <input type="name" class="form-control" id="clientenquiry" aria-describedby="emailHelp" placeholder="Enter your query"><br>
+                    </div>
+                    <div class="form-group" id="form-check">
+                        <input type="checkbox" class="form-check-input" id="isclient">
+                        <label class="form-check-label" for="isclient">Check this to work on a project with me</label>
+                    </div>
+                    <button type="submit" class="btn btn-sm">Submit</button>
+                </form>
+            </div>
+        </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
