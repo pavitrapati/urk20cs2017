@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exp5</title>
+    <script>
+        function shlnf(){
+            var x=document.getElementById('shln').value.split(' ');
+            x.sort();
+            document.getElementById('shlnmin').innerHTML=x[0];
+            document.getElementById('shlnmax').innerHTML=x[x.length-1];
+        };
+        function bmi(){
+            var xh=document.getElementById('h').value;
+            var yh=document.getElementById('w').value;
+            var zh=yh/(xh*xh);
+            if(zh<=18){
+                document.getElementById('bmio').innerHTML='💀Underweight';
+            }else if(zh>18 && zh<=25){
+                document.getElementById('bmio').innerHTML='😁Normal';
+            }else if(zh>25 && zh<=30){
+                document.getElementById('bmio').innerHTML='🤯Overweight';
+            }else{
+                document.getElementById('bmio').innerHTML='🤮Obese';
+            };
+        };
+        function ftable() {
+        var r = parseInt(document.getElementById("row").value);
+        var c = parseInt(document.getElementById("column").value);
+        var list = ['apple.png','orange.png'];
+        document.getElementById("fts").innerHTML = null;
+        for (let i = 0; i < r; i++) {
+            for (let j = 0; j < c; j++) {
+                var rand = Math.floor(Math.random() * 2);
+                var im = "<img src=" + list[rand] + " width = 150 height = 150 ></img>";
+                document.getElementById("fts").innerHTML += im;
+            }document.getElementById("fts").innerHTML += "<br>";
+        }
+        };
+        function cc(){
+            var ic=document.getElementById('inpc').value;
+            if (document.getElementById('inop').value=='INR' && document.getElementById('onop').value=='USD'){
+                document.getElementById('onpc').innerHTML=ic*70;
+            }
+            else if(document.getElementById('inop').value=='INR' && document.getElementById('onop').value=='INR'){
+                document.getElementById('onpc').innerHTML=ic;
+            }
+            else if(document.getElementById('inop').value=='USD' && document.getElementById('onop').value=='INR'){
+                document.getElementById('onpc').innerHTML=ic/70;
+            }
+            else{
+                document.getElementById('onpc').innerHTML=ic;
+            }
+        };
+        function flip() {
+            var img = document.getElementById("coin");
+            var head = document.getElementById("tc");
+            var tail = document.getElementById("hc");
+            var h = parseInt(head.innerHTML);
+            var t = parseInt(tail.innerHTML);
+
+            var l = ["head.png", "tail.png"];
+            var s = Math.floor(Math.random()*2);
+            if (l[s]==l[0]) {
+                head.innerHTML = h+1;
+            } else {
+                tail.innerHTML = t+1;
+            };
+            img.src = l[s];
+        }
+        function reset(){
+            var head = document.getElementById("tc");
+            var tail = document.getElementById("hc");
+            head.innerHTML = 0;
+            tail.innerHTML = 0;
+        };
+        function TotalBill() {
+            let winput = parseFloat(document.getElementById("weight").value);
+            let cinput = document.getElementById("cake").value;
+            let tipinput = parseInt(document.getElementById("tip").value);
+            let c = 100;
+            let Cost = c * winput;
+            let tax = 9;
+            let costwtax = Cost + ((tax * Cost) / 100);
+            let TotalCost = costwtax + ((tipinput * costwtax) / 100);
+            if (cinput == "True") {
+                document.getElementById("invalid").innerHTML = "=>Please select your preference !!"
+            }
+            else {
+                document.getElementById("bill").textContent = "Name = " + `${cinput}` + "\nWeight = " + `${winput}`
+                    + "\nTip =" + `${tipinput}` + "\nTax = " + `${tax}` + "\n\n Total Cost = " + `${TotalCost}`;
+                document.getElementById("bill").innerHTML = document.getElementById("bill").innerHTML.replace(/\n\r?/g, '<br />');
+            }
+        };
+    </script>
+</head>
+<body style="border:0;margin:0">
+    <div style="display:flex;justify-content:space-around;background-color:black;color:rgb(23, 233, 23);">
+    <div style="width:50%;">
+        <h1>SHORTEST LONGEST WORD</h1>
+        String: <input type="text" id="shln"> <button onclick="shlnf()">Submit</button><br>
+        Output:<br>
+        Min: <span id="shlnmin"></span> <br>
+        Max: <span id="shlnmax"></span>
+    </div>
+    <div style="width:50%;">
+        <h1>BMI CALCULATOR</h1>
+        Weight: <input type="text" id="w">
+        Height: <input type="text" id="h"> (metres)
+        <button onclick="bmi()" style="margin-left: 20px;">Calculate</button><br>
+        Status: <span id="bmio"></span>
+    </div>
+    </div>
+    <div style="display:flex;justify-content:center;background-color:black;color:rgb(23, 233, 23);">
+    <div style="width:100%;">
+        <h1>Fruit Table</h1>
+        Row: <input type="text" id="row">
+        Col: <input type="text" id="column">
+        <button onclick="ftable()">Show</button><br>
+        <span id="fts"></span>
+    </div>
+    </div>
+    <div style="display:flex;justify-content:space-around;background-color:black;color:rgb(23, 233, 23);">
+    <div stlye="width:50%">
+        <h1>Currency Convertor</h1>
+        Input Value: <input type="text" id="inpc"> <select name="inop" id="inop">
+            <option value="INR">INR</option>
+            <option value="USD">USD</option>
+        </select><br>
+        Output Value: <span id="onpc"></span> <select name="onop" id="onop">
+            <option value="INR">INR</option>
+            <option value="USD">USD</option>
+        </select><br>
+        <button onclick="cc()">Convert</button><br>
+    </div>
+    <div stlye="width:50%">
+        <h1>Flip Coin</h1>
+        <img id="coin" src="tail.png" alt="" width="100" height="100">
+            <div><button onclick="flip()">Flip</button>
+                <button onclick="reset()">Reset</button> <br> <br>
+            </div>
+            Tail Count: <span id="tc">0</span><br>
+            Head Count: <span id="hc">0</span><br><br>
+    </div>  
+    </div>
+    <div style="display:flex;justify-content:space-around;background-color:black;color:rgb(23, 233, 23);">
+        <div style="width:100%">
+            <h1>World Cake Order!!</h1>
+                        <form action="" id="order" onsubmit="TotalBill();return false">
+                            Order(0.5 or integers): <input type="text" name="Order" id="weight" required> Kg of
+                            <select name="Cakes" id="cake" value>
+                                <option value="True">Choose your delicacies..</option>
+                                <option value="Choco Truffle">Choco Truffle</option>
+                                <option value="Red Velvet">Red Velvet</option>
+                                <option value="Pinneaple">Pinneaple</option>
+                            </select><span id="invalid"></span><br>
+                            Tip(10=>20) <input type="range" id="tip" min="10" max="20" step="1" value="10">
+                            <span>% of total bill</span><br><br>
+                            <button type="submit">Place Order</button>
+                            <button type="reset">Reset</button>
+                        </form>
+                        Bill Split: <div id="bill"></div>
+        </div>
+    </div>
+</body>
+</html>
